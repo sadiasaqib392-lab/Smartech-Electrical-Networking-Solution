@@ -1,0 +1,6 @@
+{
+  "name": "Smartech Electrical & Networking Solution",
+  "description": "Premium corporate engineering website for Smartech Electrical & Networking Solution in Sialkot, Pakistan. Offering Solar, CCTV, Networking, Electrical, Smart Home, and Earthing solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

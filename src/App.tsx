@@ -29,7 +29,7 @@ import { EngineeringStandardsManual } from './components/EngineeringStandardsMan
 import { BoqPricingGuide } from './components/BoqPricingGuide';
 import { ClientTestimonialsTrust } from './components/ClientTestimonialsTrust';
 import { ComprehensiveServicesDirectory } from './components/ComprehensiveServicesDirectory';
-import { HomeAutomaticImageSlider } from './components/HomeAutomaticImageSlider';
+import { TopHomeImageSlider } from './components/TopHomeImageSlider';
 import { ArrowLeft, ArrowRight, Home, Wrench, ShoppingBag, Calculator, FolderKanban, Info, Mail } from 'lucide-react';
 
 export default function App() {
@@ -158,16 +158,15 @@ export default function App() {
         <main className="flex-grow">
           {/* PAGE 1: HOME */}
           {activePage === 'home' && (
-            <div className="animate-in fade-in duration-200 space-y-2">
+            <div className="animate-in fade-in duration-200 space-y-4">
+              {/* TOP AUTOMATIC IMAGE SLIDER (1.5s, Clean full view images, 'Smartech Electrical and Networking Solutions' badge, Manual arrows) */}
+              <TopHomeImageSlider />
+
               <Hero
                 onOpenQuoteModal={() => handleOpenQuoteModal()}
                 onNavigateToServices={handleNavigateToServices}
               />
               <QuickServicesStrip onSelectServiceCategory={handleSelectServiceCategory} />
-              <HomeAutomaticImageSlider
-                onOpenQuoteModal={handleOpenQuoteModal}
-                onNavigateToServices={handleNavigateToServices}
-              />
               <WhyChooseUs />
               <ClientTestimonialsTrust />
               <CallToAction onOpenQuoteModal={() => handleOpenQuoteModal()} />

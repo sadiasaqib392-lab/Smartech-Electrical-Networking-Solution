@@ -6,7 +6,7 @@ export interface ServiceItem {
   iconName: string;
   ctaText: string;
   features: string[];
-  category: 'solar' | 'cctv' | 'networking' | 'electrical' | 'smart_home' | 'earthing';
+  category: 'solar' | 'cctv' | 'networking' | 'electrical' | 'smart_home' | 'earthing' | 'vfd_pump' | 'maintenance' | 'epc' | string;
   badge?: string;
   image?: string;
 }
@@ -14,7 +14,7 @@ export interface ServiceItem {
 export interface ProductItem {
   id: string;
   name: string;
-  category: 'solar' | 'cctv' | 'networking' | 'electrical' | 'earthing';
+  category: 'solar' | 'cctv' | 'networking' | 'electrical' | 'earthing' | 'vfd_pump' | 'maintenance' | 'epc' | string;
   categoryLabel: string;
   brand: string;
   shortDesc: string;

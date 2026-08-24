@@ -1,7 +1,7 @@
 import React from 'react';
 import { SmartechLogo } from './SmartechLogo';
 import { COMPANY_INFO } from '../data/companyData';
-import { ArrowRight, MessageSquare, ShieldCheck, Sun, Camera, Network, Zap, Home, Shield, Sparkles } from 'lucide-react';
+import { ArrowRight, MessageSquare, ShieldCheck, Sun, Camera, Network, Zap, Home, Shield, Activity, Wrench, Building2, Sparkles } from 'lucide-react';
 import solarEngImg from '../assets/images/solar_electrical_eng_1787468705473.jpg';
 
 interface HeroProps {
@@ -11,12 +11,15 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal, onNavigateToServices }) => {
   const servicePills = [
-    { label: 'Solar', icon: Sun },
-    { label: 'CCTV', icon: Camera },
+    { label: 'Solar PV', icon: Sun },
+    { label: 'Electrical Wiring', icon: Zap },
+    { label: 'CCTV Security', icon: Camera },
     { label: 'Networking', icon: Network },
-    { label: 'Electrical', icon: Zap },
     { label: 'Smart Home', icon: Home },
-    { label: 'Earthing', icon: Shield },
+    { label: 'Earthing & Lightning', icon: Shield },
+    { label: 'VFD & Pumps', icon: Activity },
+    { label: 'Electrical Maintenance', icon: Wrench },
+    { label: 'EPC Projects', icon: Building2 },
   ];
 
   return (
@@ -113,17 +116,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal, onNavigateToServic
             </div>
           </div>
 
-          {/* Right Visual Column (5 cols) with Image & Geometric Stat Blocks */}
-          <div className="lg:col-span-5 relative min-h-[360px] lg:min-h-full flex flex-col justify-end border-t lg:border-t-0 lg:border-l border-blue-950">
+          {/* Right Visual Column (5 cols) with Single High-Resolution Image */}
+          <div className="lg:col-span-5 relative min-h-[360px] lg:min-h-full flex flex-col justify-end border-t lg:border-t-0 lg:border-l border-blue-950 overflow-hidden">
             {/* Background Engineering Image with Gradient */}
             <div className="absolute inset-0 bg-cover bg-center bg-[#0F1E3D]">
               <img
                 src={solarEngImg}
                 alt="Smartech Solar and Industrial Electrical Engineering"
-                className="w-full h-full object-cover opacity-75"
+                className="w-full h-full object-cover opacity-85"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0A192F]/40 via-transparent to-transparent hidden lg:block" />
             </div>
 
             {/* Floating Smartech Badge */}

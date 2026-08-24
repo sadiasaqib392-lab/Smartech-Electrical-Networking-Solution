@@ -28,6 +28,8 @@ import { CctvNetworkCalculator } from './components/CctvNetworkCalculator';
 import { EngineeringStandardsManual } from './components/EngineeringStandardsManual';
 import { BoqPricingGuide } from './components/BoqPricingGuide';
 import { ClientTestimonialsTrust } from './components/ClientTestimonialsTrust';
+import { ComprehensiveServicesDirectory } from './components/ComprehensiveServicesDirectory';
+import { HomeAutomaticImageSlider } from './components/HomeAutomaticImageSlider';
 import { ArrowLeft, ArrowRight, Home, Wrench, ShoppingBag, Calculator, FolderKanban, Info, Mail } from 'lucide-react';
 
 export default function App() {
@@ -162,6 +164,11 @@ export default function App() {
                 onNavigateToServices={handleNavigateToServices}
               />
               <QuickServicesStrip onSelectServiceCategory={handleSelectServiceCategory} />
+              <HomeAutomaticImageSlider
+                onOpenQuoteModal={handleOpenQuoteModal}
+                onNavigateToServices={handleNavigateToServices}
+              />
+              <WhyChooseUs />
               <ClientTestimonialsTrust />
               <CallToAction onOpenQuoteModal={() => handleOpenQuoteModal()} />
             </div>
@@ -171,6 +178,7 @@ export default function App() {
           {activePage === 'services' && (
             <div className="animate-in fade-in duration-200 space-y-8">
               <ServicesSection onOpenQuoteModal={handleOpenQuoteModal} />
+              <ComprehensiveServicesDirectory onOpenQuoteModal={handleOpenQuoteModal} />
               <EngineeringStandardsManual />
             </div>
           )}

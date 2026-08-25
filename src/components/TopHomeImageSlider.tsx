@@ -59,12 +59,12 @@ export const TopHomeImageSlider: React.FC = () => {
     setCurrentIndex(index);
   };
 
-  // Automatic slide cycle: strictly 2.5 seconds (2500ms)
+  // Automatic slide cycle: strictly 3.5 seconds (3500ms)
   useEffect(() => {
     if (isPlaying) {
       timerRef.current = setInterval(() => {
         nextSlide();
-      }, 2500);
+      }, 3500);
     }
     return () => {
       if (timerRef.current) {
@@ -133,17 +133,17 @@ export const TopHomeImageSlider: React.FC = () => {
           <ChevronRight className="w-6 h-6" />
         </button>
 
-        {/* Bottom Bar: 2.5-Second Progress Line + Dots + Counter + Play/Pause */}
+        {/* Bottom Bar: 3.5-Second Progress Line + Dots + Counter + Play/Pause */}
         <div className="absolute bottom-0 inset-x-0 z-30 p-3 sm:p-4 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/90 to-transparent space-y-2">
-          {/* 2.5s Auto Slide Progress Indicator */}
+          {/* 3.5s Auto Slide Progress Indicator */}
           <div className="w-full bg-blue-950/80 h-1 rounded-full overflow-hidden">
             <div
               key={currentIndex}
               className={`h-full bg-gradient-to-r from-[#1D4ED8] via-[#38BDF8] to-emerald-400 ${
-                isPlaying ? 'animate-[topSlideProgress_2.5s_linear_infinite]' : 'w-full opacity-60'
+                isPlaying ? 'animate-[topSlideProgress_3.5s_linear_infinite]' : 'w-full opacity-60'
               }`}
               style={{
-                animationDuration: '2500ms',
+                animationDuration: '3500ms',
               }}
             />
           </div>
@@ -173,7 +173,7 @@ export const TopHomeImageSlider: React.FC = () => {
 
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
-                aria-label={isPlaying ? 'Pause 2.5s auto-slide' : 'Resume 2.5s auto-slide'}
+                aria-label={isPlaying ? 'Pause 3.5s auto-slide' : 'Resume 3.5s auto-slide'}
                 className="p-1.5 text-blue-300 hover:text-white bg-[#0F224A]/90 hover:bg-[#1D4ED8] border border-blue-700/60 rounded-xs transition-colors cursor-pointer"
                 title={isPlaying ? 'Pause auto-slide' : 'Resume auto-slide'}
               >

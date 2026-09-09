@@ -22,6 +22,9 @@ export interface ProductItem {
   availability: 'In Stock' | 'Available for Projects' | 'Custom Order';
   tag?: string;
   imageUrl?: string;
+  videoUrl?: string;
+  isVideo?: boolean;
+  gallery?: string[];
 }
 
 export interface ProjectEnvironment {

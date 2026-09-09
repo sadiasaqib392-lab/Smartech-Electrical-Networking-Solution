@@ -18,6 +18,9 @@ import {
   Minus,
   Info,
   Check,
+  Play,
+  Eye,
+  Video,
 } from 'lucide-react';
 
 interface ProductsSectionProps {
@@ -189,6 +192,60 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ onOpenQuoteMod
                         {product.availability}
                       </span>
                     </div>
+
+                    {/* Product Media Display (Video or Image) */}
+                    {product.videoUrl ? (
+                      <div className="relative mb-3.5 rounded-xs overflow-hidden bg-black border border-gray-200 shadow-inner group">
+                        <video
+                          src={product.videoUrl}
+                          className="w-full h-44 object-cover"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          controls
+                        />
+                        <div className="absolute top-2 left-2 pointer-events-none">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-red-600 text-white text-[9px] font-bold uppercase tracking-wider rounded-xs shadow-xs">
+                            <Play className="w-2.5 h-2.5 fill-current" />
+                            Live Video Showcase
+                          </span>
+                        </div>
+                      </div>
+                    ) : product.imageUrl ? (
+                      <div
+                        onClick={() => setSelectedProduct(product)}
+                        className="relative mb-3.5 rounded-xs overflow-hidden bg-slate-100 border border-gray-200 group cursor-pointer h-44 flex items-center justify-center"
+                      >
+                        <img
+                          src={product.imageUrl}
+                          alt={product.name}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors flex items-center justify-center">
+                          <span className="opacity-0 group-hover:opacity-100 transition-opacity px-2.5 py-1 bg-white/95 text-[#0F172A] text-[10px] font-bold uppercase tracking-wider shadow-sm rounded-xs flex items-center gap-1">
+                            <Eye className="w-3 h-3 text-[#1D4ED8]" />
+                            View Gallery & Specs
+                          </span>
+                        </div>
+                        {product.name === 'APSUN' && (
+                          <div className="absolute top-2 left-2 pointer-events-none z-10">
+                            <span className="px-2 py-0.5 bg-[#0A192F]/95 text-white font-extrabold text-[10px] tracking-wider uppercase rounded-xs border border-blue-500/50 shadow-xs">
+                              APSUN
+                            </span>
+                          </div>
+                        )}
+                        {product.gallery && product.gallery.length > 1 && (
+                          <div className="absolute bottom-2 right-2 pointer-events-none">
+                            <span className="px-2 py-0.5 bg-[#0F172A]/80 text-white text-[9px] font-bold rounded-xs flex items-center gap-1 shadow-xs">
+                              <Layers className="w-2.5 h-2.5 text-blue-300" />
+                              {product.gallery.length} Photos
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    ) : null}
 
                     {/* Product Name */}
                     <h3 className="font-heading text-base font-bold text-[#0F172A] mb-1 leading-snug">

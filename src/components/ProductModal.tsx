@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ProductItem } from '../types';
 import { COMPANY_INFO } from '../data/companyData';
 import { useCart } from '../context/CartContext';
-import { X, CheckCircle2, MessageSquare, ArrowRight, ShieldCheck, Tag, Box, ShoppingCart, Plus, Minus } from 'lucide-react';
+import { X, CheckCircle2, MessageSquare, ArrowRight, ShieldCheck, Tag, Box, ShoppingCart, Plus, Minus, Play, Video, Eye } from 'lucide-react';
 
 interface ProductModalProps {
   product: ProductItem | null;
@@ -17,8 +17,22 @@ export const ProductModal: React.FC<ProductModalProps> = ({
 }) => {
   const { addToCart, openCart } = useCart();
   const [quantity, setQuantity] = useState(1);
+  const [activeMediaUrl, setActiveMediaUrl] = useState<string>('');
+
+  useEffect(() => {
+    if (product) {
+      setQuantity(1);
+      setActiveMediaUrl(product.imageUrl || '');
+    }
+  }, [product]);
 
   if (!product) return null;
+
+  const allImages = product.gallery && product.gallery.length > 0 
+    ? product.gallery 
+    : product.imageUrl 
+      ? [product.imageUrl] 
+      : [];
 
   const handleAddProductToCart = () => {
     addToCart(
@@ -72,6 +86,69 @@ export const ProductModal: React.FC<ProductModalProps> = ({
 
         {/* Modal Body */}
         <div className="p-6 overflow-y-auto space-y-5 text-left bg-white">
+          {/* Media Showcase: Video or Image Gallery */}
+          {product.videoUrl ? (
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-slate-700">
+                <span className="inline-flex items-center gap-1.5 text-red-600 font-bold">
+                  <Play className="w-3.5 h-3.5 fill-red-600" />
+                  Live Product Video Showcase
+                </span>
+                <span className="text-slate-500 font-normal">HWOO Warehouse Dispatch Pakistan</span>
+              </div>
+              <div className="relative rounded-xs overflow-hidden bg-black border border-gray-300 shadow-md">
+                <video
+                  src={product.videoUrl}
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full max-h-[320px] object-contain mx-auto"
+                />
+              </div>
+            </div>
+          ) : allImages.length > 0 ? (
+            <div className="space-y-3">
+              <div className="relative rounded-xs overflow-hidden bg-slate-900/5 border border-gray-200 flex items-center justify-center p-2 min-h-[220px] max-h-[340px]">
+                <img
+                  src={activeMediaUrl || allImages[0]}
+                  alt={product.name}
+                  className="max-h-[320px] w-auto max-w-full object-contain rounded-xs shadow-xs"
+                />
+                <div className="absolute top-2 right-2 flex items-center gap-1.5">
+                  {product.name === 'APSUN' && (
+                    <span className="px-2 py-0.5 bg-[#1D4ED8] text-white text-[9px] font-black rounded-xs uppercase tracking-wider shadow-xs">
+                      APSUN
+                    </span>
+                  )}
+                  <span className="px-2 py-0.5 bg-[#0F172A]/80 text-white text-[9px] font-bold rounded-xs uppercase tracking-wider">
+                    Verified Product Media
+                  </span>
+                </div>
+              </div>
+
+              {/* Gallery Thumbnails if multiple images */}
+              {allImages.length > 1 && (
+                <div className="flex items-center gap-2 overflow-x-auto pb-1">
+                  {allImages.map((img, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveMediaUrl(img)}
+                      className={`relative w-16 h-16 rounded-xs overflow-hidden border-2 flex-shrink-0 transition-all ${
+                        (activeMediaUrl === img || (!activeMediaUrl && i === 0))
+                          ? 'border-[#1D4ED8] shadow-sm scale-105'
+                          : 'border-gray-200 opacity-70 hover:opacity-100'
+                      }`}
+                    >
+                      <img src={img} alt={`Thumbnail ${i + 1}`} className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : null}
+
           {/* Brand & Stock Status */}
           <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 bg-slate-50 border-l-4 border-[#0F172A] border-y border-r border-gray-200 rounded-xs">
             <div>

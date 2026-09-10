@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ProductItem } from '../types';
 import { COMPANY_INFO } from '../data/companyData';
 import { useCart } from '../context/CartContext';
-import { X, CheckCircle2, MessageSquare, ArrowRight, ShieldCheck, Tag, Box, ShoppingCart, Plus, Minus, Play, Video, Eye } from 'lucide-react';
+import { X, CheckCircle2, MessageSquare, ArrowRight, ShieldCheck, Tag, Box, ShoppingCart, Plus, Minus, Play, Video, Eye, FileText } from 'lucide-react';
 
 interface ProductModalProps {
   product: ProductItem | null;
@@ -122,6 +122,11 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                       APSUN
                     </span>
                   )}
+                  {product.category === 'photon-sunways' && (
+                    <span className="px-2 py-0.5 bg-[#1D4ED8] text-white text-[9px] font-black rounded-xs uppercase tracking-wider shadow-xs">
+                      {product.brand.includes('Sunways') ? 'SUNWAYS' : 'PHOTON'}
+                    </span>
+                  )}
                   <span className="px-2 py-0.5 bg-[#0F172A]/80 text-white text-[9px] font-bold rounded-xs uppercase tracking-wider">
                     Verified Product Media
                   </span>
@@ -188,6 +193,37 @@ export const ProductModal: React.FC<ProductModalProps> = ({
               ))}
             </div>
           </div>
+
+          {/* Detailed Engineering Specification Sheet / Datasheet Table */}
+          {product.specTable && product.specTable.length > 0 && (
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <FileText className="w-3.5 h-3.5 text-[#1D4ED8]" />
+                <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-600">
+                  Engineering Datasheet & Parameters
+                </h4>
+              </div>
+              <div className="border border-gray-200 rounded-xs overflow-hidden bg-white text-xs">
+                <table className="w-full text-left border-collapse">
+                  <tbody>
+                    {product.specTable.map((row, rIdx) => (
+                      <tr
+                        key={rIdx}
+                        className={rIdx % 2 === 0 ? 'bg-slate-50/60' : 'bg-white'}
+                      >
+                        <td className="py-2 px-3 font-semibold text-slate-700 border-b border-gray-100 w-1/3">
+                          {row.label}
+                        </td>
+                        <td className="py-2 px-3 text-slate-900 border-b border-gray-100 font-mono text-[11px]">
+                          {row.value}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
 
           {/* Quantity Selector + Add to Cart Highlight Block */}
           <div className="p-4 bg-[#F8FAFC] border-l-4 border-[#1D4ED8] border-y border-r border-gray-200 rounded-xs flex flex-col sm:flex-row items-center justify-between gap-4">

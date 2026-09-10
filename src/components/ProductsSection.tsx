@@ -21,6 +21,7 @@ import {
   Play,
   Eye,
   Video,
+  Cpu,
 } from 'lucide-react';
 
 interface ProductsSectionProps {
@@ -38,8 +39,8 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ onOpenQuoteMod
   const tabs = [
     { id: 'all', label: 'All Equipment', icon: Layers, count: PRODUCTS_DATA.length },
     { id: 'solar', label: 'Solar PV & Inverters', icon: Sun, count: PRODUCTS_DATA.filter(p => p.category === 'solar').length },
+    { id: 'photon-sunways', label: 'Photon & Sunways (Inverters & ESS)', icon: Cpu, count: PRODUCTS_DATA.filter(p => p.category === 'photon-sunways').length },
     { id: 'cctv', label: 'CCTV & Security', icon: Camera, count: PRODUCTS_DATA.filter(p => p.category === 'cctv').length },
-    { id: 'networking', label: 'Networking & Fiber', icon: Network, count: PRODUCTS_DATA.filter(p => p.category === 'networking').length },
     { id: 'electrical', label: 'Electrical Switchgear', icon: Zap, count: PRODUCTS_DATA.filter(p => p.category === 'electrical').length },
     { id: 'earthing', label: 'Earthing & Grounding', icon: Shield, count: PRODUCTS_DATA.filter(p => p.category === 'earthing').length },
   ];
@@ -61,6 +62,8 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ onOpenQuoteMod
     switch (category) {
       case 'solar':
         return Sun;
+      case 'photon-sunways':
+        return Cpu;
       case 'cctv':
         return Camera;
       case 'networking':
@@ -233,6 +236,13 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ onOpenQuoteMod
                           <div className="absolute top-2 left-2 pointer-events-none z-10">
                             <span className="px-2 py-0.5 bg-[#0A192F]/95 text-white font-extrabold text-[10px] tracking-wider uppercase rounded-xs border border-blue-500/50 shadow-xs">
                               APSUN
+                            </span>
+                          </div>
+                        )}
+                        {product.category === 'photon-sunways' && (
+                          <div className="absolute top-2 left-2 pointer-events-none z-10">
+                            <span className="px-2 py-0.5 bg-[#0F172A]/90 text-white font-black text-[9px] tracking-wider uppercase rounded-xs border border-blue-400/40 shadow-xs">
+                              {product.brand.includes('Sunways') ? 'SUNWAYS' : 'PHOTON'}
                             </span>
                           </div>
                         )}

@@ -11,10 +11,15 @@ export interface ServiceItem {
   image?: string;
 }
 
+export interface ProductSpecRow {
+  label: string;
+  value: string;
+}
+
 export interface ProductItem {
   id: string;
   name: string;
-  category: 'solar' | 'cctv' | 'networking' | 'electrical' | 'earthing' | 'vfd_pump' | 'maintenance' | 'epc' | string;
+  category: 'solar' | 'cctv' | 'networking' | 'photon-sunways' | 'electrical' | 'earthing' | 'vfd_pump' | 'maintenance' | 'epc' | string;
   categoryLabel: string;
   brand: string;
   shortDesc: string;
@@ -25,6 +30,7 @@ export interface ProductItem {
   videoUrl?: string;
   isVideo?: boolean;
   gallery?: string[];
+  specTable?: ProductSpecRow[];
 }
 
 export interface ProjectEnvironment {

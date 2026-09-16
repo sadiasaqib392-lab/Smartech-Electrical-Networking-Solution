@@ -87,7 +87,7 @@ export const HeroImageSlider: React.FC = () => {
 
   return (
     <div
-      className="relative w-full h-full min-h-[380px] lg:min-h-full overflow-hidden select-none group/slider bg-[#0A192F]"
+      className="relative w-full h-full min-h-[380px] lg:min-h-full overflow-hidden select-none group/slider bg-[#1C1917]"
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
       aria-label="Smartech Automated Engineering Showcase Slider"
@@ -111,14 +111,14 @@ export const HeroImageSlider: React.FC = () => {
               loading={index === 0 ? 'eager' : 'lazy'}
             />
             {/* Gradient Overlays for High Legibility & Seamless Contrast */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/50 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0A192F]/60 via-transparent to-transparent hidden lg:block" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917] via-[#1C1917]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1C1917]/70 via-transparent to-transparent hidden lg:block" />
           </div>
         );
       })}
 
       {/* Floating Smartech Brand Tag */}
-      <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 bg-[#0A192F]/90 backdrop-blur-xs px-3 py-1.5 sm:px-4 sm:py-2 border border-blue-800/80 shadow-md">
+      <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 bg-[#1C1917]/90 backdrop-blur-xs px-3 py-1.5 sm:px-4 sm:py-2 border border-stone-700/80 shadow-md rounded-lg">
         <SmartechLogo size="sm" theme="dark" variant="horizontal" showSubtitle={false} />
       </div>
 
@@ -126,7 +126,7 @@ export const HeroImageSlider: React.FC = () => {
       <button
         onClick={prevSlide}
         aria-label="Previous Slide"
-        className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 bg-[#0A192F]/80 hover:bg-[#1D4ED8] text-white border border-blue-700/60 rounded-xs flex items-center justify-center transition-all duration-200 shadow-md hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#38BDF8]"
+        className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 bg-[#1C1917]/80 hover:bg-[#E14D2A] text-white border border-stone-700/80 rounded-lg flex items-center justify-center transition-all duration-200 shadow-md hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#E14D2A]"
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
@@ -134,26 +134,26 @@ export const HeroImageSlider: React.FC = () => {
       <button
         onClick={nextSlide}
         aria-label="Next Slide"
-        className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 bg-[#0A192F]/80 hover:bg-[#1D4ED8] text-white border border-blue-700/60 rounded-xs flex items-center justify-center transition-all duration-200 shadow-md hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#38BDF8]"
+        className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 bg-[#1C1917]/80 hover:bg-[#E14D2A] text-white border border-stone-700/80 rounded-lg flex items-center justify-center transition-all duration-200 shadow-md hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#E14D2A]"
       >
         <ChevronRight className="w-5 h-5" />
       </button>
 
       {/* Slide Badge & Title Overlay with 3s Timer Progress Indicator */}
       <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-20">
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#0F224A]/90 border border-blue-500/50 rounded-xs backdrop-blur-xs shadow-md">
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#1C1917]/90 border border-stone-700 rounded-lg backdrop-blur-xs shadow-md">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-100">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-stone-200">
             {slides[currentIndex].category}
           </span>
         </div>
       </div>
 
       {/* Bottom Content Area: Active Slide Tagline, Dots, Auto-play Indicator & Stat Callouts */}
-      <div className="absolute bottom-0 inset-x-0 z-20 p-4 sm:p-6 lg:p-8 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/90 to-transparent text-white space-y-4">
+      <div className="absolute bottom-0 inset-x-0 z-20 p-4 sm:p-6 lg:p-8 bg-gradient-to-t from-[#1C1917] via-[#1C1917]/90 to-transparent text-white space-y-4">
         {/* Active Slide Text */}
         <div className="transition-all duration-300">
-          <div className="text-xs font-mono font-bold text-[#38BDF8] uppercase tracking-wider mb-1 flex items-center gap-1.5">
+          <div className="text-xs font-mono font-bold text-[#FF8A65] uppercase tracking-wider mb-1 flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5" />
             <span>{slides[currentIndex].tagline}</span>
           </div>
@@ -163,10 +163,10 @@ export const HeroImageSlider: React.FC = () => {
         </div>
 
         {/* 1-Second Cycle Animated Progress Line */}
-        <div className="w-full bg-blue-950/80 h-1 rounded-full overflow-hidden">
+        <div className="w-full bg-stone-800 h-1 rounded-full overflow-hidden">
           <div
             key={currentIndex}
-            className={`h-full bg-gradient-to-r from-[#1D4ED8] to-[#38BDF8] ${
+            className={`h-full bg-gradient-to-r from-[#E14D2A] to-[#FF8A65] ${
               isPlaying ? 'animate-[slideProgress_1s_linear_infinite]' : 'w-full opacity-60'
             }`}
             style={{
@@ -186,8 +186,8 @@ export const HeroImageSlider: React.FC = () => {
                 aria-label={`Go to slide ${idx + 1}`}
                 className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                   idx === currentIndex
-                    ? 'w-6 sm:w-8 bg-[#38BDF8] shadow-xs'
-                    : 'w-2 bg-blue-900/80 hover:bg-blue-600'
+                    ? 'w-6 sm:w-8 bg-[#E14D2A] shadow-xs'
+                    : 'w-2 bg-stone-700 hover:bg-stone-500'
                 }`}
               />
             ))}
@@ -195,14 +195,14 @@ export const HeroImageSlider: React.FC = () => {
 
           {/* Controls: Slide Counter (e.g. 01 / 05) & Play/Pause Button */}
           <div className="flex items-center gap-3">
-            <span className="text-xs font-mono font-bold text-blue-200">
-              0{currentIndex + 1} <span className="text-blue-500">/</span> 0{slides.length}
+            <span className="text-xs font-mono font-bold text-stone-300">
+              0{currentIndex + 1} <span className="text-[#E14D2A]">/</span> 0{slides.length}
             </span>
 
             <button
               onClick={() => setIsPlaying(!isPlaying)}
               aria-label={isPlaying ? 'Pause Auto-Slider' : 'Resume Auto-Slider'}
-              className="p-1.5 text-blue-300 hover:text-white bg-blue-950/70 hover:bg-blue-900 border border-blue-800/80 rounded-xs transition-colors cursor-pointer"
+              className="p-1.5 text-stone-300 hover:text-white bg-stone-800/80 hover:bg-stone-700 border border-stone-700 rounded-lg transition-colors cursor-pointer"
               title={isPlaying ? 'Pause auto slide (3s)' : 'Resume auto slide'}
             >
               {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
@@ -211,14 +211,14 @@ export const HeroImageSlider: React.FC = () => {
         </div>
 
         {/* Key Statistics Callouts */}
-        <div className="pt-3 border-t border-blue-900/60 grid grid-cols-2 gap-3">
-          <div className="border-l-2 border-[#38BDF8] pl-3">
+        <div className="pt-3 border-t border-stone-800 grid grid-cols-2 gap-3">
+          <div className="border-l-2 border-[#E14D2A] pl-3">
             <div className="text-lg sm:text-xl font-bold font-heading">Complete</div>
-            <div className="text-[9px] text-blue-200 uppercase tracking-widest font-bold">Turnkey Solutions</div>
+            <div className="text-[9px] text-stone-300 uppercase tracking-widest font-bold">Turnkey Solutions</div>
           </div>
-          <div className="border-l-2 border-[#38BDF8] pl-3">
+          <div className="border-l-2 border-[#E14D2A] pl-3">
             <div className="text-lg sm:text-xl font-bold font-heading">Multi-Sector</div>
-            <div className="text-[9px] text-blue-200 uppercase tracking-widest font-bold">Industrial & Domestic</div>
+            <div className="text-[9px] text-stone-300 uppercase tracking-widest font-bold">Industrial & Domestic</div>
           </div>
         </div>
       </div>

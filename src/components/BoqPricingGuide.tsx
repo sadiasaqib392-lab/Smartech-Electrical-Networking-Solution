@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FileSpreadsheet, Check, Download, ArrowRight, ShieldCheck, Zap, Camera, Network, Clock } from 'lucide-react';
+import { MotionReveal } from './MotionReveal';
 
 interface BoqPricingGuideProps {
   onOpenQuoteModal: (packageName: string, category: string) => void;
@@ -95,128 +96,134 @@ export const BoqPricingGuide: React.FC<BoqPricingGuideProps> = ({ onOpenQuoteMod
   const activeBoqData = boqPackages[selectedBoq];
 
   return (
-    <section className="py-12 bg-white border border-gray-200 rounded-xs shadow-xs">
+    <section className="py-12 bg-white border border-[#E8E5DF] rounded-xl shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-gray-200">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-[#1D4ED8] text-xs font-bold uppercase tracking-widest rounded-xs mb-2">
-              <FileSpreadsheet className="w-3.5 h-3.5" />
-              <span>Bill of Quantities (BOQ) Blueprint</span>
-            </div>
-            <h2 className="font-heading text-2xl sm:text-3xl font-black text-[#0F172A] tracking-tight">
-              Sample Turnkey Engineering BOQ Specifications
-            </h2>
-            <p className="text-sm text-slate-600 mt-1">
-              Transparent, itemized component lists showing exactly what hardware, cabling, protection gear, and certifications are included in our installations.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2 text-xs font-mono bg-slate-50 border p-2 rounded-xs">
-            <Clock className="w-4 h-4 text-[#1D4ED8]" />
-            <span>Turnkey SLA: <strong>5-12 Days Commissioning</strong></span>
-          </div>
-        </div>
-
-        {/* BOQ Selection Tabs */}
-        <div className="flex flex-wrap gap-2 pt-6 mb-6">
-          {[
-            { id: '10kw', label: '10kW Hybrid Solar BOQ' },
-            { id: '20kw', label: '20kW Commercial Solar BOQ' },
-            { id: '50kw', label: '50kW Industrial Solar BOQ' },
-            { id: 'cctv32', label: '32-Cam 4K Security BOQ' },
-            { id: 'server42u', label: '42U IT Server Rack BOQ' },
-          ].map((item) => (
-            <button
-              key={item.id}
-              onClick={() => setSelectedBoq(item.id as any)}
-              className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xs transition-all cursor-pointer ${
-                selectedBoq === item.id
-                  ? 'bg-[#1D4ED8] text-white shadow-xs'
-                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Active BOQ Card */}
-        <div className="bg-[#F8FAFC] border border-gray-200 rounded-xs p-6 shadow-xs space-y-6">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-gray-200">
+        <MotionReveal>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-[#E8E5DF]">
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#1D4ED8] bg-blue-50 px-2 py-0.5 border border-blue-200 rounded">
-                Verified Turnkey Package
-              </span>
-              <h3 className="font-heading text-xl font-bold text-[#0F172A] mt-1">
-                {activeBoqData.title}
-              </h3>
-              <p className="text-xs text-slate-600 mt-0.5">
-                <strong>Target Application:</strong> {activeBoqData.idealFor}
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FFF7ED] text-[#E14D2A] text-xs font-bold uppercase tracking-widest rounded-md border border-[#FED7AA] mb-2">
+                <FileSpreadsheet className="w-3.5 h-3.5" />
+                <span>Bill of Quantities (BOQ) Blueprint</span>
+              </div>
+              <h2 className="font-heading text-2xl sm:text-3xl font-black text-[#1C1917] tracking-tight">
+                Sample Turnkey Engineering BOQ Specifications
+              </h2>
+              <p className="text-sm text-[#57534E] mt-1">
+                Transparent, itemized component lists showing exactly what hardware, cabling, protection gear, and certifications are included in our installations.
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
-              <div className="p-2.5 bg-white border border-gray-200 rounded-xs text-center">
-                <div className="text-[9px] uppercase font-bold text-slate-500">Benchmark Performance</div>
-                <div className="text-xs font-black text-[#1D4ED8] font-mono">{activeBoqData.estimatedGen}</div>
+            <div className="flex items-center gap-2 text-xs font-mono bg-[#FAF8F5] border border-[#E8E5DF] p-2.5 rounded-lg text-[#1C1917]">
+              <Clock className="w-4 h-4 text-[#E14D2A]" />
+              <span>Turnkey SLA: <strong>5-12 Days Commissioning</strong></span>
+            </div>
+          </div>
+        </MotionReveal>
+
+        {/* BOQ Selection Tabs */}
+        <MotionReveal delay={0.05}>
+          <div className="flex flex-wrap gap-2 pt-6 mb-6">
+            {[
+              { id: '10kw', label: '10kW Hybrid Solar BOQ' },
+              { id: '20kw', label: '20kW Commercial Solar BOQ' },
+              { id: '50kw', label: '50kW Industrial Solar BOQ' },
+              { id: 'cctv32', label: '32-Cam 4K Security BOQ' },
+              { id: 'server42u', label: '42U IT Server Rack BOQ' },
+            ].map((item) => (
+              <button
+                key={item.id}
+                onClick={() => setSelectedBoq(item.id as any)}
+                className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-lg transition-all cursor-pointer ${
+                  selectedBoq === item.id
+                    ? 'bg-[#E14D2A] text-white shadow-xs'
+                    : 'bg-[#F5F2EB] hover:bg-[#EFECE6] text-[#57534E]'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </MotionReveal>
+
+        {/* Active BOQ Card */}
+        <MotionReveal delay={0.1}>
+          <div className="bg-[#FAF8F5] border border-[#E8E5DF] rounded-xl p-6 shadow-xs space-y-6">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-[#E8E5DF]">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#E14D2A] bg-[#FFF7ED] px-2.5 py-0.5 border border-[#FED7AA] rounded-md">
+                  Verified Turnkey Package
+                </span>
+                <h3 className="font-heading text-xl font-bold text-[#1C1917] mt-2">
+                  {activeBoqData.title}
+                </h3>
+                <p className="text-xs text-[#57534E] mt-0.5">
+                  <strong className="text-[#1C1917]">Target Application:</strong> {activeBoqData.idealFor}
+                </p>
               </div>
 
-              <button
-                onClick={() => onOpenQuoteModal(activeBoqData.title, activeBoqData.category)}
-                className="px-5 py-2.5 bg-[#1D4ED8] hover:bg-[#0A192F] text-white text-xs font-bold uppercase tracking-wider rounded-xs shadow-xs transition-colors flex items-center gap-2 cursor-pointer"
-              >
-                <span>Request Custom BOQ Cost</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="p-2.5 bg-white border border-[#E8E5DF] rounded-lg text-center shadow-2xs">
+                  <div className="text-[9px] uppercase font-bold text-[#57534E]">Benchmark Performance</div>
+                  <div className="text-xs font-black text-[#E14D2A] font-mono">{activeBoqData.estimatedGen}</div>
+                </div>
 
-          {/* Itemized Table */}
-          <div className="overflow-x-auto bg-white border border-gray-200 rounded-xs">
-            <table className="w-full text-left text-xs">
-              <thead>
-                <tr className="bg-slate-100/80 border-b border-gray-200 text-slate-700 font-bold uppercase tracking-wider">
-                  <th className="py-2.5 px-4 w-12 text-center">#</th>
-                  <th className="py-2.5 px-4">Component & Technical Specification</th>
-                  <th className="py-2.5 px-4">Quantity / Dimension</th>
-                  <th className="py-2.5 px-4">Recommended OEM Brand</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {activeBoqData.items.map((it, idx) => (
-                  <tr key={idx} className="hover:bg-slate-50/70">
-                    <td className="py-2.5 px-4 text-center font-mono font-bold text-slate-400">
-                      {idx + 1}
-                    </td>
-                    <td className="py-2.5 px-4 font-semibold text-[#0F172A]">
-                      {it.name}
-                    </td>
-                    <td className="py-2.5 px-4 font-mono text-slate-700">
-                      {it.qty}
-                    </td>
-                    <td className="py-2.5 px-4">
-                      <span className="bg-slate-100 text-slate-800 font-mono text-[11px] px-2 py-0.5 rounded border border-slate-200">
-                        {it.brand}
-                      </span>
-                    </td>
+                <button
+                  onClick={() => onOpenQuoteModal(activeBoqData.title, activeBoqData.category)}
+                  className="px-5 py-2.5 bg-[#E14D2A] hover:bg-[#C83B1B] text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-xs transition-colors flex items-center gap-2 cursor-pointer"
+                >
+                  <span>Request Custom BOQ Cost</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Itemized Table */}
+            <div className="overflow-x-auto bg-white border border-[#E8E5DF] rounded-lg">
+              <table className="w-full text-left text-xs">
+                <thead>
+                  <tr className="bg-[#F5F2EB] border-b border-[#E8E5DF] text-[#1C1917] font-bold uppercase tracking-wider">
+                    <th className="py-3 px-4 w-12 text-center">#</th>
+                    <th className="py-3 px-4">Component & Technical Specification</th>
+                    <th className="py-3 px-4">Quantity / Dimension</th>
+                    <th className="py-3 px-4">Recommended OEM Brand</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody className="divide-y divide-[#E8E5DF]">
+                  {activeBoqData.items.map((it, idx) => (
+                    <tr key={idx} className="hover:bg-[#FAF8F5]/80 transition-colors">
+                      <td className="py-2.5 px-4 text-center font-mono font-bold text-stone-400">
+                        {idx + 1}
+                      </td>
+                      <td className="py-2.5 px-4 font-semibold text-[#1C1917]">
+                        {it.name}
+                      </td>
+                      <td className="py-2.5 px-4 font-mono text-[#57534E]">
+                        {it.qty}
+                      </td>
+                      <td className="py-2.5 px-4">
+                        <span className="bg-[#FAF8F5] text-[#1C1917] font-mono text-[11px] px-2 py-0.5 rounded-md border border-[#E8E5DF]">
+                          {it.brand}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
-          {/* Warranty & Guarantee footer */}
-          <div className="p-3.5 bg-blue-50/70 border border-blue-200 rounded-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
-            <div className="flex items-center gap-2 text-slate-800 font-semibold">
-              <ShieldCheck className="w-4 h-4 text-[#1D4ED8]" />
-              <span><strong>Hardware Warranty:</strong> {activeBoqData.warranty}</span>
-            </div>
-            <div className="text-slate-600 text-[11px]">
-              Includes full engineering drawings, Single Line Diagram (SLD) & Fluke testing reports.
+            {/* Warranty & Guarantee footer */}
+            <div className="p-3.5 bg-[#FFF7ED] border border-[#FED7AA] rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
+              <div className="flex items-center gap-2 text-[#1C1917] font-semibold">
+                <ShieldCheck className="w-4 h-4 text-[#E14D2A]" />
+                <span><strong>Hardware Warranty:</strong> {activeBoqData.warranty}</span>
+              </div>
+              <div className="text-[#57534E] text-[11px]">
+                Includes full engineering drawings, Single Line Diagram (SLD) & Fluke testing reports.
+              </div>
             </div>
           </div>
-        </div>
+        </MotionReveal>
       </div>
     </section>
   );

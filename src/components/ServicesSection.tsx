@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SERVICES_DATA } from '../data/companyData';
 import { useCart } from '../context/CartContext';
+import { MotionReveal, RevealHeading, RevealText, RevealCard, RevealButton } from './MotionReveal';
 import { 
   SunMedium, 
   Camera, 
@@ -14,8 +15,7 @@ import {
   ArrowRight, 
   ShoppingCart, 
   Check, 
-  Layers, 
-  PhoneCall 
+  Layers
 } from 'lucide-react';
 
 interface ServicesSectionProps {
@@ -76,135 +76,140 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenQuoteMod
       });
 
   return (
-    <section id="services" className="py-16 lg:py-20 bg-[#0A192F] text-white relative overflow-hidden border-b border-blue-950">
-      {/* Background Glows */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#1D4ED8]/10 rounded-full blur-3xl pointer-events-none" />
-
+    <section id="services" className="py-16 lg:py-20 bg-[#FAF8F5] text-[#1C1917] relative overflow-hidden border-b border-[#E8E5DF]">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-10">
-          <div className="inline-flex items-center gap-2 bg-[#1D4ED8] text-white text-[10px] px-3 py-1 font-bold uppercase tracking-widest rounded-xs shadow-xs">
-            <Layers className="w-3.5 h-3.5" />
-            <span>Turnkey Engineering & Technical Disciplines</span>
-          </div>
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
+          <RevealText delay={0.05}>
+            <div className="inline-flex items-center gap-2 bg-[#E14D2A] text-white text-[10px] px-3.5 py-1 font-bold uppercase tracking-widest rounded-md shadow-xs">
+              <Layers className="w-3.5 h-3.5" />
+              <span>Turnkey Engineering & Technical Disciplines</span>
+            </div>
+          </RevealText>
 
-          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
-            Our 9 Core <span className="text-[#38BDF8]">Engineering & Technical Services</span>
-          </h2>
+          <RevealHeading delay={0.1}>
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1C1917] tracking-tight">
+              Our 9 Core <span className="text-[#E14D2A]">Engineering & Technical Services</span>
+            </h2>
+          </RevealHeading>
 
-          <p className="text-blue-200/80 text-sm sm:text-base max-w-2xl mx-auto">
-            Comprehensive turnkey engineering solutions—from blueprint design and hardware procurement to precision installation, diagnostics, and lifetime maintenance.
-          </p>
+          <RevealText delay={0.15}>
+            <p className="text-[#57534E] text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+              Comprehensive turnkey engineering solutions—from blueprint design and hardware procurement to precision installation, diagnostics, and lifetime maintenance.
+            </p>
+          </RevealText>
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {[
-            { id: 'all', label: 'All 9 Disciplines' },
-            { id: 'power', label: 'Solar, Power & Earthing' },
-            { id: 'tech', label: 'CCTV, Networking & Smart Home' },
-            { id: 'contracts', label: 'Maintenance & Turnkey EPC' },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveFilter(tab.id)}
-              className={`px-4 py-2 rounded-xs text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                activeFilter === tab.id
-                  ? 'bg-[#1D4ED8] text-white shadow-md border border-blue-400/50'
-                  : 'bg-[#0F224A] text-blue-200 hover:bg-[#162D61] border border-blue-900/60'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+        <RevealButton delay={0.18}>
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {[
+              { id: 'all', label: 'All 9 Disciplines' },
+              { id: 'power', label: 'Solar, Power & Earthing' },
+              { id: 'tech', label: 'CCTV, Networking & Smart Home' },
+              { id: 'contracts', label: 'Maintenance & Turnkey EPC' },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveFilter(tab.id)}
+                className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                  activeFilter === tab.id
+                    ? 'bg-[#E14D2A] text-white shadow-md'
+                    : 'bg-white text-[#57534E] hover:bg-[#FFF7ED] hover:text-[#E14D2A] border border-[#E8E5DF]'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </RevealButton>
 
-        {/* 9 Services Grid */}
+        {/* 9 Services Grid with Staggered Scroll Animations */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredServices.map((service, index) => {
             const Icon = getIcon(service.iconName);
             const inCart = cartItems.find((i) => i.id === `srv-${service.id}`);
 
             return (
-              <div
-                key={service.id}
-                id={`service-${service.id}`}
-                className="group relative flex flex-col justify-between bg-[#0F224A] border-l-4 border-[#38BDF8] border-y border-r border-blue-900/60 p-6 hover:bg-[#162D61] transition-all duration-200 rounded-xs shadow-md"
-              >
-                <div>
-                  {/* Top Bar: Icon + Badge + Number */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-11 h-11 bg-[#0A192F] border border-blue-900 flex items-center justify-center text-[#38BDF8] group-hover:bg-[#1D4ED8] group-hover:text-white transition-all rounded-xs shadow-xs">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5 bg-[#0A192F] border border-blue-800 text-blue-200 rounded-xs">
-                        {service.badge}
-                      </span>
-                      <span className="text-xs font-black font-mono text-blue-300/40">
-                        #{index + 1}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Title & Short Description */}
-                  <h3 className="font-heading text-lg font-bold text-white mb-2 group-hover:text-[#38BDF8] transition-colors leading-snug">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-xs text-blue-100/70 leading-relaxed mb-5 font-normal">
-                    {service.shortDesc}
-                  </p>
-
-                  {/* Inclusions / Deliverables */}
-                  <div className="space-y-1.5 pt-3.5 border-t border-blue-900/60 mb-6">
-                    <div className="text-[9px] font-bold uppercase tracking-widest text-blue-300 mb-1.5">
-                      Scope & Capabilities:
-                    </div>
-                    {service.features.slice(0, 4).map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-blue-100/90">
-                        <span className="text-[#38BDF8] font-bold flex-shrink-0">✓</span>
-                        <span className="truncate">{feature}</span>
+              <RevealCard key={service.id} delay={(index % 3) * 0.08}>
+                <div
+                  id={`service-${service.id}`}
+                  className="group relative flex flex-col justify-between bg-white border-l-4 border-[#1C1917] hover:border-[#E14D2A] border-y border-r border-[#E8E5DF] p-6 hover:shadow-xl transition-all duration-300 rounded-lg shadow-xs h-full hover:-translate-y-1.5"
+                >
+                  <div>
+                    {/* Top Bar: Icon + Badge + Number */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-11 h-11 bg-[#F5F2EB] border border-[#E8E5DF] flex items-center justify-center text-[#E14D2A] group-hover:bg-[#E14D2A] group-hover:text-white transition-all rounded-lg shadow-xs group-hover:scale-110">
+                        <Icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
                       </div>
-                    ))}
+                      <div className="flex items-center gap-2">
+                        <span className="text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5 bg-[#FFF7ED] border border-[#FED7AA] text-[#E14D2A] rounded-md">
+                          {service.badge}
+                        </span>
+                        <span className="text-xs font-black font-mono text-stone-300 group-hover:text-[#E14D2A]/40 transition-colors">
+                          #{index + 1}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Title & Short Description */}
+                    <h3 className="font-heading text-lg font-bold text-[#1C1917] mb-2 group-hover:text-[#E14D2A] transition-colors leading-snug">
+                      {service.title}
+                    </h3>
+
+                    <p className="text-xs text-[#57534E] leading-relaxed mb-5 font-normal">
+                      {service.shortDesc}
+                    </p>
+
+                    {/* Inclusions / Deliverables */}
+                    <div className="space-y-1.5 pt-3.5 border-t border-stone-100 mb-6">
+                      <div className="text-[9px] font-bold uppercase tracking-widest text-stone-400 mb-1.5">
+                        Scope & Capabilities:
+                      </div>
+                      {service.features.slice(0, 4).map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-xs text-[#57534E]">
+                          <span className="text-[#E14D2A] font-bold flex-shrink-0">✓</span>
+                          <span className="truncate">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Card CTA Actions */}
+                  <div className="pt-3 border-t border-stone-100 space-y-2">
+                    <div className="grid grid-cols-2 gap-2">
+                      <button
+                        onClick={() => handleAddServiceToCart(service)}
+                        className={`inline-flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg font-bold text-[11px] uppercase tracking-wider transition-all cursor-pointer ${
+                          inCart
+                            ? 'bg-emerald-600 text-white'
+                            : 'bg-[#F5F2EB] hover:bg-[#FFF7ED] text-[#1C1917] hover:text-[#E14D2A] border border-[#E8E5DF]'
+                        }`}
+                      >
+                        {inCart ? (
+                          <>
+                            <Check className="w-3.5 h-3.5" />
+                            <span>In Cart</span>
+                          </>
+                        ) : (
+                          <>
+                            <ShoppingCart className="w-3.5 h-3.5 text-[#E14D2A]" />
+                            <span>Add to Cart</span>
+                          </>
+                        )}
+                      </button>
+
+                      <button
+                        onClick={() => onOpenQuoteModal(service.title)}
+                        className="inline-flex items-center justify-center gap-1 py-2 px-2 bg-[#E14D2A] hover:bg-[#C83B1B] text-white font-bold text-[11px] uppercase tracking-wider transition-all rounded-lg cursor-pointer shadow-xs hover:-translate-y-0.5"
+                      >
+                        <span>Quote</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
                   </div>
                 </div>
-
-                {/* Card CTA Actions */}
-                <div className="pt-3 border-t border-blue-900/60 space-y-2">
-                  <div className="grid grid-cols-2 gap-2">
-                    <button
-                      onClick={() => handleAddServiceToCart(service)}
-                      className={`inline-flex items-center justify-center gap-1.5 py-2 px-2 rounded-xs font-bold text-[11px] uppercase tracking-wider transition-all cursor-pointer ${
-                        inCart
-                          ? 'bg-emerald-600 text-white'
-                          : 'bg-[#0A192F] hover:bg-[#1D4ED8] text-white border border-blue-800'
-                      }`}
-                    >
-                      {inCart ? (
-                        <>
-                          <Check className="w-3.5 h-3.5" />
-                          <span>In Cart</span>
-                        </>
-                      ) : (
-                        <>
-                          <ShoppingCart className="w-3.5 h-3.5 text-[#38BDF8]" />
-                          <span>Add to Cart</span>
-                        </>
-                      )}
-                    </button>
-
-                    <button
-                      onClick={() => onOpenQuoteModal(service.title)}
-                      className="inline-flex items-center justify-center gap-1 py-2 px-2 bg-[#1D4ED8] hover:bg-white hover:text-[#0A192F] text-white font-bold text-[11px] uppercase tracking-wider transition-all rounded-xs cursor-pointer shadow-xs"
-                    >
-                      <span>Quote</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </div>
-              </div>
+              </RevealCard>
             );
           })}
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Star, CheckCircle, Building, Quote, Shield, Award } from 'lucide-react';
+import { Star, Quote, Shield, Award } from 'lucide-react';
+import { RevealHeading, RevealText, RevealCard, RevealIcon } from './MotionReveal';
 
 export const ClientTestimonialsTrust: React.FC = () => {
   const testimonials = [
@@ -51,79 +52,91 @@ export const ClientTestimonialsTrust: React.FC = () => {
   ];
 
   return (
-    <section className="py-14 bg-slate-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        {/* Tier-1 OEM Brand Partners Marquee Strip */}
+    <section className="py-16 bg-[#1C1917] text-white border-b border-stone-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+        {/* Tier-1 OEM Brand Partners Strip */}
         <div className="space-y-4 text-center">
-          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#38BDF8]">
-            <Award className="w-4 h-4" />
-            <span>Authorized Hardware Sourcing & OEM Equipment Partners</span>
-          </div>
-          <h3 className="font-heading text-xl sm:text-2xl font-bold tracking-tight text-white">
-            We Deploy Only Genuine, Certified Tier-1 Engineering Brands
-          </h3>
+          <RevealText delay={0.05}>
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#F97316]">
+              <Award className="w-4 h-4" />
+              <span>Authorized Hardware Sourcing & OEM Equipment Partners</span>
+            </div>
+          </RevealText>
+
+          <RevealHeading delay={0.1}>
+            <h3 className="font-heading text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-white">
+              We Deploy Genuine, Certified Tier-1 Engineering Brands
+            </h3>
+          </RevealHeading>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 pt-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 pt-4">
             {brandPartners.map((brand, idx) => (
-              <div
-                key={idx}
-                className="p-3 bg-slate-800/80 border border-slate-700 rounded-xs hover:border-[#1D4ED8] transition-colors text-center flex flex-col justify-center"
-              >
-                <div className="font-bold text-xs text-white font-mono">{brand.name}</div>
-                <div className="text-[10px] text-blue-200/70 mt-0.5">{brand.category}</div>
-              </div>
+              <RevealIcon key={idx} delay={(idx % 6) * 0.05}>
+                <div
+                  className="p-3.5 bg-[#292524] border border-stone-800 rounded-lg hover:border-[#E14D2A] hover:bg-[#332E2B] transition-all duration-300 text-center flex flex-col justify-center hover:-translate-y-1 hover:shadow-md cursor-default h-full"
+                >
+                  <div className="font-bold text-xs text-white font-mono">{brand.name}</div>
+                  <div className="text-[10px] text-stone-400 mt-1">{brand.category}</div>
+                </div>
+              </RevealIcon>
             ))}
           </div>
         </div>
 
         {/* Client Reviews Grid */}
-        <div className="pt-6 border-t border-slate-800">
+        <div className="pt-8 border-t border-stone-800">
           <div className="max-w-3xl mb-8">
-            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-400">
-              <Shield className="w-4 h-4" />
-              <span>Verified Client Satisfaction</span>
-            </div>
-            <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
-              Trusted by Sialkot Exporters, Factories & Commercial Facilities
-            </h3>
+            <RevealText delay={0.05}>
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#E14D2A]">
+                <Shield className="w-4 h-4" />
+                <span>Verified Client Satisfaction</span>
+              </div>
+            </RevealText>
+
+            <RevealHeading delay={0.1}>
+              <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1.5">
+                Trusted by Sialkot Exporters, Factories & Facilities
+              </h3>
+            </RevealHeading>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((item, idx) => (
-              <div
-                key={idx}
-                className="p-6 bg-slate-800/90 border-t-4 border-[#1D4ED8] border-x border-b border-slate-700/80 rounded-xs shadow-md flex flex-col justify-between space-y-4"
-              >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1 text-amber-400">
-                      {[...Array(item.rating)].map((_, rIdx) => (
-                        <Star key={rIdx} className="w-4 h-4 fill-amber-400" />
-                      ))}
+              <RevealCard key={idx} delay={idx * 0.1}>
+                <div
+                  className="p-6 bg-[#292524] border-t-4 border-[#E14D2A] border-x border-b border-stone-800 rounded-lg shadow-md flex flex-col justify-between space-y-4 h-full hover:border-[#F97316] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-1 text-amber-400">
+                        {[...Array(item.rating)].map((_, rIdx) => (
+                          <Star key={rIdx} className="w-4 h-4 fill-amber-400" />
+                        ))}
+                      </div>
+                      <Quote className="w-6 h-6 text-stone-600" />
                     </div>
-                    <Quote className="w-6 h-6 text-slate-600" />
+
+                    <div className="text-xs text-[#FB923C] font-mono bg-[#1C1917] p-2.5 rounded-md border border-stone-700">
+                      <strong>Project:</strong> {item.system}
+                    </div>
+
+                    <p className="text-xs text-stone-300 leading-relaxed italic">
+                      "{item.comment}"
+                    </p>
                   </div>
 
-                  <div className="text-xs text-blue-300 font-mono bg-blue-950/60 p-2 rounded-xs border border-blue-900/60">
-                    <strong>Project:</strong> {item.system}
+                  <div className="pt-3 border-t border-stone-700 flex items-center gap-3">
+                    <div className="w-9 h-9 bg-[#E14D2A] text-white flex items-center justify-center rounded-md font-black text-xs font-mono">
+                      {item.name.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="font-bold text-xs text-white">{item.name}</div>
+                      <div className="text-[11px] text-stone-400">{item.role}</div>
+                      <div className="text-[10px] text-stone-400">{item.company} • {item.location}</div>
+                    </div>
                   </div>
-
-                  <p className="text-xs text-slate-300 leading-relaxed italic">
-                    "{item.comment}"
-                  </p>
                 </div>
-
-                <div className="pt-3 border-t border-slate-700/80 flex items-center gap-3">
-                  <div className="w-9 h-9 bg-[#1D4ED8] text-white flex items-center justify-center rounded-xs font-black text-xs font-mono">
-                    {item.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="font-bold text-xs text-white">{item.name}</div>
-                    <div className="text-[11px] text-slate-400">{item.role}</div>
-                    <div className="text-[10px] text-blue-200/80">{item.company} • {item.location}</div>
-                  </div>
-                </div>
-              </div>
+              </RevealCard>
             ))}
           </div>
         </div>

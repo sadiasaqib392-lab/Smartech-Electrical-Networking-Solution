@@ -21,24 +21,24 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
   };
 
   return (
-    <footer className="bg-[#0A192F] text-blue-100/90 pt-16 pb-12 border-t-2 border-[#1D4ED8]">
+    <footer className="bg-[#1C1917] text-stone-300 pt-16 pb-12 border-t-2 border-[#E14D2A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-blue-950">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-stone-800">
           {/* Column 1: Official Logo and Company Profile (4 cols) */}
           <div className="lg:col-span-4 space-y-4 text-left">
             <a href="#home" className="inline-block focus:outline-none">
               <SmartechLogo theme="dark" size="md" variant="horizontal" />
             </a>
-            <p className="text-sm text-blue-200/80 leading-relaxed font-normal">
+            <p className="text-sm text-stone-300 leading-relaxed font-normal">
               {COMPANY_INFO.tagline}
             </p>
-            <p className="text-xs text-blue-200/70 leading-relaxed">
+            <p className="text-xs text-stone-400 leading-relaxed">
               Complete technical engineering solutions provider for residential, commercial and industrial projects in Sialkot and throughout Punjab, Pakistan.
             </p>
 
             <div className="pt-2">
-              <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#0F224A] border-l-2 border-[#38BDF8] text-[10px] font-bold uppercase tracking-wider text-blue-100 rounded-xs">
-                <Shield className="w-3.5 h-3.5 text-[#38BDF8]" />
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#292524] border-l-2 border-[#E14D2A] text-[10px] font-bold uppercase tracking-wider text-stone-200 rounded-md">
+                <Shield className="w-3.5 h-3.5 text-[#F97316]" />
                 <span>Certified Engineering Standards</span>
               </span>
             </div>
@@ -46,14 +46,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
 
           {/* Column 2: Quick Links (2 cols) */}
           <div className="lg:col-span-2 space-y-4 text-left">
-            <h4 className="font-heading font-bold text-white text-xs uppercase tracking-widest border-b border-blue-900/60 pb-2">
+            <h4 className="font-heading font-bold text-white text-xs uppercase tracking-widest border-b border-stone-800 pb-2">
               Quick Links
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
                 <button
                   onClick={() => handleLinkClick('home')}
-                  className="text-blue-200/80 hover:text-white transition-colors cursor-pointer text-left"
+                  className="text-stone-400 hover:text-[#E14D2A] transition-colors cursor-pointer text-left"
                 >
                   1. Home & Overview
                 </button>
@@ -61,7 +61,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
               <li>
                 <button
                   onClick={() => handleLinkClick('services')}
-                  className="text-blue-200/80 hover:text-white transition-colors cursor-pointer text-left"
+                  className="text-stone-400 hover:text-[#E14D2A] transition-colors cursor-pointer text-left"
                 >
                   2. Turnkey Services
                 </button>
@@ -69,7 +69,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
               <li>
                 <button
                   onClick={() => handleLinkClick('products')}
-                  className="text-blue-200/80 hover:text-white transition-colors cursor-pointer text-left"
+                  className="text-stone-400 hover:text-[#E14D2A] transition-colors cursor-pointer text-left"
                 >
                   3. Products & Store
                 </button>
@@ -77,7 +77,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
               <li>
                 <button
                   onClick={() => handleLinkClick('calculator')}
-                  className="text-blue-200/80 hover:text-white transition-colors cursor-pointer text-left"
+                  className="text-stone-400 hover:text-[#E14D2A] transition-colors cursor-pointer text-left"
                 >
                   4. Solar Calculator
                 </button>
@@ -85,7 +85,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
               <li>
                 <button
                   onClick={() => handleLinkClick('projects')}
-                  className="text-blue-200/80 hover:text-white transition-colors cursor-pointer text-left"
+                  className="text-stone-400 hover:text-[#E14D2A] transition-colors cursor-pointer text-left"
                 >
                   5. Case Studies
                 </button>
@@ -93,7 +93,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
               <li>
                 <button
                   onClick={() => handleLinkClick('about')}
-                  className="text-blue-200/80 hover:text-white transition-colors cursor-pointer text-left"
+                  className="text-stone-400 hover:text-[#E14D2A] transition-colors cursor-pointer text-left"
                 >
                   6. About Us
                 </button>
@@ -101,7 +101,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
               <li>
                 <button
                   onClick={() => handleLinkClick('contact')}
-                  className="text-blue-200/80 hover:text-white transition-colors cursor-pointer text-left"
+                  className="text-stone-400 hover:text-[#E14D2A] transition-colors cursor-pointer text-left"
                 >
                   7. Contact & RFQ
                 </button>
@@ -111,7 +111,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
 
           {/* Column 3: Services (3 cols) */}
           <div className="lg:col-span-3 space-y-4 text-left">
-            <h4 className="font-heading font-bold text-white text-xs uppercase tracking-widest border-b border-blue-900/60 pb-2">
+            <h4 className="font-heading font-bold text-white text-xs uppercase tracking-widest border-b border-stone-800 pb-2">
               Services
             </h4>
             <ul className="space-y-2 text-xs">
@@ -119,7 +119,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
                 <a
                   href="#services"
                   onClick={() => onOpenQuoteModal('Solar Energy Solutions')}
-                  className="text-blue-200/80 hover:text-[#38BDF8] transition-colors block"
+                  className="text-stone-400 hover:text-[#E14D2A] transition-colors block"
                 >
                   Solar Energy Solutions
                 </a>
@@ -128,7 +128,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
                 <a
                   href="#services"
                   onClick={() => onOpenQuoteModal('CCTV & Security Solutions')}
-                  className="text-blue-200/80 hover:text-[#38BDF8] transition-colors block"
+                  className="text-stone-400 hover:text-[#E14D2A] transition-colors block"
                 >
                   CCTV & Security Solutions
                 </a>
@@ -137,7 +137,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
                 <a
                   href="#services"
                   onClick={() => onOpenQuoteModal('Networking Solutions')}
-                  className="text-blue-200/80 hover:text-[#38BDF8] transition-colors block"
+                  className="text-stone-400 hover:text-[#E14D2A] transition-colors block"
                 >
                   Networking Solutions
                 </a>
@@ -146,7 +146,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
                 <a
                   href="#services"
                   onClick={() => onOpenQuoteModal('Electrical Solutions')}
-                  className="text-blue-200/80 hover:text-[#38BDF8] transition-colors block"
+                  className="text-stone-400 hover:text-[#E14D2A] transition-colors block"
                 >
                   Electrical Solutions
                 </a>
@@ -155,7 +155,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
                 <a
                   href="#services"
                   onClick={() => onOpenQuoteModal('Smart Home Automation')}
-                  className="text-blue-200/80 hover:text-[#38BDF8] transition-colors block"
+                  className="text-stone-400 hover:text-[#E14D2A] transition-colors block"
                 >
                   Smart Home Automation
                 </a>
@@ -164,7 +164,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
                 <a
                   href="#services"
                   onClick={() => onOpenQuoteModal('Electrical Earthing Solutions')}
-                  className="text-blue-200/80 hover:text-[#38BDF8] transition-colors block"
+                  className="text-stone-400 hover:text-[#E14D2A] transition-colors block"
                 >
                   Electrical Earthing Solutions
                 </a>
@@ -174,16 +174,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
 
           {/* Column 4: Contact (3 cols) */}
           <div className="lg:col-span-3 space-y-4 text-left">
-            <h4 className="font-heading font-bold text-white text-xs uppercase tracking-widest border-b border-blue-900/60 pb-2">
+            <h4 className="font-heading font-bold text-white text-xs uppercase tracking-widest border-b border-stone-800 pb-2">
               Contact Us
             </h4>
-            <div className="space-y-3 text-xs text-blue-200/80">
+            <div className="space-y-3 text-xs text-stone-300">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#38BDF8] flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#F97316] flex-shrink-0 mt-0.5" />
                 <span>{COMPANY_INFO.location}</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#38BDF8] flex-shrink-0" />
+                <Phone className="w-4 h-4 text-[#F97316] flex-shrink-0" />
                 <a href={`tel:${COMPANY_INFO.phoneRaw}`} className="hover:text-white transition-colors">
                   {COMPANY_INFO.phone}
                 </a>
@@ -202,7 +202,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#38BDF8] flex-shrink-0" />
+                <Mail className="w-4 h-4 text-[#F97316] flex-shrink-0" />
                 <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-white transition-colors">
                   {COMPANY_INFO.email}
                 </a>
@@ -212,7 +212,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
             <div className="pt-2">
               <button
                 onClick={() => onOpenQuoteModal()}
-                className="w-full py-2.5 px-4 bg-[#1D4ED8] hover:bg-white hover:text-[#0A192F] text-white font-bold text-xs uppercase tracking-widest transition-colors text-center rounded-xs shadow-md border border-blue-400/30"
+                className="w-full py-2.5 px-4 bg-[#E14D2A] hover:bg-[#C83B1B] text-white font-bold text-xs uppercase tracking-widest transition-colors text-center rounded-lg shadow-md cursor-pointer"
               >
                 Request Free Quote
               </button>
@@ -221,7 +221,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
         </div>
 
         {/* Bottom Copyright & Back to Top */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-blue-300/60 font-mono">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500 font-mono">
           <div>
             © 2026 Smartech Electrical & Networking Solution. All Rights Reserved.
           </div>
@@ -230,7 +230,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
             <span>•</span>
             <button
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1 text-blue-300 hover:text-white transition-colors uppercase tracking-wider text-[11px]"
+              className="inline-flex items-center gap-1 text-stone-400 hover:text-white transition-colors uppercase tracking-wider text-[11px] cursor-pointer"
             >
               <span>Back to Top</span>
               <ArrowUp className="w-3.5 h-3.5" />

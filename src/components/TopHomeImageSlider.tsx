@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Pause, Play, Sparkles } from 'lucide-react';
+import { motion } from 'motion/react';
 import { SmartechLogo } from './SmartechLogo';
 
 import pakSolarImg from '../assets/images/pak_solar_engineers_1787655302518.jpg';
@@ -75,7 +76,7 @@ export const TopHomeImageSlider: React.FC = () => {
 
   return (
     <div
-      className="relative w-full bg-[#0A192F] text-white overflow-hidden border-b-2 border-[#1D4ED8] shadow-xl select-none group/topslider"
+      className="relative w-full bg-[#1C1917] text-white overflow-hidden border-b-2 border-[#E14D2A] shadow-xl select-none group/topslider"
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
       aria-label="Smartech Electrical and Networking Solutions Top Automated Slider"
@@ -87,40 +88,46 @@ export const TopHomeImageSlider: React.FC = () => {
           return (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                isActive ? 'opacity-100 z-10 scale-100' : 'opacity-0 z-0 scale-105 pointer-events-none'
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
-              style={{ transitionProperty: 'opacity, transform' }}
             >
               <img
                 src={slide.image}
                 alt={slide.alt}
-                className="w-full h-full object-cover object-center"
+                className={`w-full h-full object-cover object-center transition-transform duration-[4000ms] ease-out ${
+                  isActive ? 'scale-105' : 'scale-100'
+                }`}
                 referrerPolicy="no-referrer"
                 loading={index === 0 ? 'eager' : 'lazy'}
               />
               {/* Very subtle edge vignette to keep image clear and vibrant */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/80 via-transparent to-[#0A192F]/40" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/85 via-transparent to-[#1C1917]/40" />
             </div>
           );
         })}
 
         {/* ONLY TEXT ON THE IMAGES: "Smartech Electrical and Networking Solutions" */}
-        <div className="absolute top-4 sm:top-6 inset-x-0 z-20 flex justify-center px-4 pointer-events-none">
-          <div className="bg-[#0A192F]/90 backdrop-blur-md px-4 sm:px-6 py-2 sm:py-2.5 rounded-xs border border-blue-500/60 shadow-xl flex items-center gap-2.5 sm:gap-3 pointer-events-auto">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
-            <h1 className="font-heading text-xs sm:text-base md:text-lg lg:text-xl font-black tracking-tight text-white uppercase text-center drop-shadow-sm">
+        <motion.div
+          initial={{ opacity: 0, y: -16, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="absolute top-4 sm:top-6 inset-x-0 z-20 flex justify-center px-4 pointer-events-none"
+        >
+          <div className="bg-[#1C1917]/90 backdrop-blur-md px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg border border-[#E14D2A]/60 shadow-xl flex items-center gap-2.5 sm:gap-3 pointer-events-auto">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#E14D2A] animate-ping" />
+            <h2 className="font-heading text-xs sm:text-base md:text-lg lg:text-xl font-black tracking-tight text-white uppercase text-center drop-shadow-sm">
               Smartech Electrical and Networking Solutions
-            </h1>
-            <Sparkles className="w-4 h-4 text-[#38BDF8] hidden sm:block" />
+            </h2>
+            <Sparkles className="w-4 h-4 text-[#F97316] hidden sm:block" />
           </div>
-        </div>
+        </motion.div>
 
         {/* Manual Left / Right Arrow Navigation Buttons */}
         <button
           onClick={prevSlide}
           aria-label="Previous Slide"
-          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 bg-[#0A192F]/85 hover:bg-[#1D4ED8] text-white border border-blue-500/60 rounded-xs flex items-center justify-center transition-all duration-200 shadow-xl hover:scale-110 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#38BDF8]"
+          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 bg-[#1C1917]/85 hover:bg-[#E14D2A] text-white border border-stone-700 hover:border-[#E14D2A] rounded-lg flex items-center justify-center transition-all duration-200 shadow-xl hover:scale-105 cursor-pointer focus:outline-none"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
@@ -128,18 +135,18 @@ export const TopHomeImageSlider: React.FC = () => {
         <button
           onClick={nextSlide}
           aria-label="Next Slide"
-          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 bg-[#0A192F]/85 hover:bg-[#1D4ED8] text-white border border-blue-500/60 rounded-xs flex items-center justify-center transition-all duration-200 shadow-xl hover:scale-110 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#38BDF8]"
+          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 bg-[#1C1917]/85 hover:bg-[#E14D2A] text-white border border-stone-700 hover:border-[#E14D2A] rounded-lg flex items-center justify-center transition-all duration-200 shadow-xl hover:scale-105 cursor-pointer focus:outline-none"
         >
           <ChevronRight className="w-6 h-6" />
         </button>
 
         {/* Bottom Bar: 3.5-Second Progress Line + Dots + Counter + Play/Pause */}
-        <div className="absolute bottom-0 inset-x-0 z-30 p-3 sm:p-4 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/90 to-transparent space-y-2">
+        <div className="absolute bottom-0 inset-x-0 z-30 p-3 sm:p-4 bg-gradient-to-t from-[#1C1917] via-[#1C1917]/90 to-transparent space-y-2">
           {/* 3.5s Auto Slide Progress Indicator */}
-          <div className="w-full bg-blue-950/80 h-1 rounded-full overflow-hidden">
+          <div className="w-full bg-stone-800/80 h-1 rounded-full overflow-hidden">
             <div
               key={currentIndex}
-              className={`h-full bg-gradient-to-r from-[#1D4ED8] via-[#38BDF8] to-emerald-400 ${
+              className={`h-full bg-gradient-to-r from-[#E14D2A] via-[#F97316] to-[#FB923C] ${
                 isPlaying ? 'animate-[topSlideProgress_3.5s_linear_infinite]' : 'w-full opacity-60'
               }`}
               style={{
@@ -158,8 +165,8 @@ export const TopHomeImageSlider: React.FC = () => {
                   aria-label={`Go to slide ${idx + 1}`}
                   className={`h-2 sm:h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
                     idx === currentIndex
-                      ? 'w-7 sm:w-10 bg-[#38BDF8] shadow-sm'
-                      : 'w-2 sm:w-2.5 bg-blue-900/90 hover:bg-blue-600'
+                      ? 'w-7 sm:w-10 bg-[#E14D2A] shadow-sm'
+                      : 'w-2 sm:w-2.5 bg-stone-700 hover:bg-stone-500'
                   }`}
                 />
               ))}
@@ -167,14 +174,14 @@ export const TopHomeImageSlider: React.FC = () => {
 
             {/* Counter Badge & Play/Pause */}
             <div className="flex items-center gap-3">
-              <span className="text-xs sm:text-sm font-mono font-bold text-blue-200 bg-[#0F224A]/90 px-2.5 py-1 rounded-xs border border-blue-800/80">
-                0{currentIndex + 1} <span className="text-blue-500">/</span> 0{slides.length}
+              <span className="text-xs sm:text-sm font-mono font-bold text-stone-300 bg-[#292524]/90 px-2.5 py-1 rounded-md border border-stone-700">
+                0{currentIndex + 1} <span className="text-stone-500">/</span> 0{slides.length}
               </span>
 
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
                 aria-label={isPlaying ? 'Pause 3.5s auto-slide' : 'Resume 3.5s auto-slide'}
-                className="p-1.5 text-blue-300 hover:text-white bg-[#0F224A]/90 hover:bg-[#1D4ED8] border border-blue-700/60 rounded-xs transition-colors cursor-pointer"
+                className="p-1.5 text-stone-300 hover:text-white bg-[#292524]/90 hover:bg-[#E14D2A] border border-stone-700 rounded-md transition-colors cursor-pointer"
                 title={isPlaying ? 'Pause auto-slide' : 'Resume auto-slide'}
               >
                 {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}

@@ -110,11 +110,11 @@ export const SmartechLogo: React.FC<SmartechLogoProps> = ({
              A 52 52 0 1 0 100 152 
              A 52 52 0 1 0 100 48 
              Z"
-          fill={isDark ? '#F8FAFC' : '#18181B'}
+          fill={isDark ? '#FAF8F5' : '#1C1917'}
         />
 
-        {/* Circular Inner Background (White / Navy in dark mode) */}
-        <circle cx="100" cy="100" r="51.5" fill={isDark ? '#0A192F' : '#FFFFFF'} />
+        {/* Circular Inner Background (White / Charcoal in dark mode) */}
+        <circle cx="100" cy="100" r="51.5" fill={isDark ? '#1C1917' : '#FFFFFF'} />
 
         {/* RED SAFETY HELMET / HARDHAT */}
         <g id="smartech-helmet" transform="translate(0, 0)">
@@ -219,7 +219,7 @@ export const SmartechLogo: React.FC<SmartechLogoProps> = ({
           {showSubtitle && (
             <span
               className={`mt-1.5 font-bold uppercase tracking-[0.22em] ${subtitleSizes[size]} ${
-                isDark ? 'text-blue-200/80' : 'text-slate-600'
+                isDark ? 'text-stone-300' : 'text-[#57534E]'
               }`}
             >
               ELECTRICAL & NETWORKING SOLUTION
@@ -245,7 +245,7 @@ export const SmartechLogo: React.FC<SmartechLogoProps> = ({
         {showSubtitle && (
           <span
             className={`font-bold uppercase leading-tight tracking-[0.22em] ${subtitleSizes[size]} ${
-              isDark ? 'text-blue-200/80' : 'text-slate-600'
+              isDark ? 'text-stone-300' : 'text-[#57534E]'
             }`}
           >
             ELECTRICAL & NETWORKING SOLUTION
